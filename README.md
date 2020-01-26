@@ -23,12 +23,12 @@ a convenient way of returning results of ExternalEvent handlers and dealing with
 ## Example
 
 ```
-    var task = new RevitTask<int>();
+    var task = new RevitTask();
 
     string mess = string.Empty;
     try
     {
-        var i = await revitTask.Run(app => app.ActiveUIDocument
+        var i = (int) await task.Run(app => app.ActiveUIDocument
                             .Selection
                             .PickObjects(Autodesk.Revit.UI.Selection.ObjectType.Element)
                             .Count);
