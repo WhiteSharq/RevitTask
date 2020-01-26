@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FB731CF5-D924-49F4-9899-E9A2BF7EB08F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>RevitTaskExample</RootNamespace>
+    <AssemblyName>RevitTaskExample</AssemblyName>
+	<OutputPath>bin\$(Configuration)\</OutputPath>   	
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == '2016|AnyCPU' ">
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>       
+  </PropertyGroup>                                              
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == '2017|AnyCPU' ">
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>     
+  </PropertyGroup>                                              
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == '2018|AnyCPU' ">
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>     
+  </PropertyGroup>                                              
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == '2019|AnyCPU' ">
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>       
+  </PropertyGroup>                                              
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == '2020|AnyCPU' ">
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+  </PropertyGroup>
+  <Choose>
+    <When Condition=" '$(Configuration)'=='2016' ">
+      <ItemGroup>
+		<Reference Include="RevitAPI, Version=16.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+          <SpecificVersion>False</SpecificVersion>
+          <HintPath>.\_Refs\$(Configuration)\RevitAPI.dll</HintPath>
+		  <Private>False</Private>
+        </Reference>
+        <Reference Include="RevitAPIUI, Version=16.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+          <SpecificVersion>False</SpecificVersion>
+          <HintPath>.\_Refs\$(Configuration)\RevitAPIUI.dll</HintPath>
+          <Private>False</Private>
+        </Reference>		
+      </ItemGroup>	  
+    </When>
+    <When Condition=" '$(Configuration)'=='2017' ">
+      <ItemGroup>
+        <Reference Include="RevitAPI, Version=17.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+          <SpecificVersion>False</SpecificVersion>
+          <HintPath>.\_Refs\$(Configuration)\RevitAPI.dll</HintPath>
+		  <Private>False</Private>
+        </Reference>	  
+        <Reference Include="RevitAPIUI, Version=17.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+          <SpecificVersion>False</SpecificVersion>
+          <HintPath>.\_Refs\$(Configuration)\RevitAPIUI.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition=" '$(Configuration)'=='2018' ">
+      <ItemGroup>
+        <Reference Include="RevitAPI, Version=18.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+          <SpecificVersion>False</SpecificVersion>
+          <HintPath>.\_Refs\$(Configuration)\RevitAPI.dll</HintPath>
+		  <Private>False</Private>
+        </Reference>	  
+        <Reference Include="RevitAPIUI, Version=18.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+          <SpecificVersion>False</SpecificVersion>
+          <HintPath>.\_Refs\$(Configuration)\RevitAPIUI.dll</HintPath>
+		  <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition=" '$(Configuration)'=='2019' ">
+      <ItemGroup>
+        <Reference Include="RevitAPI, Version=19.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+          <SpecificVersion>False</SpecificVersion>
+          <HintPath>.\_Refs\$(Configuration)\RevitAPI.dll</HintPath>
+		  <Private>False</Private>
+        </Reference>	  
+        <Reference Include="RevitAPIUI, Version=19.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+          <SpecificVersion>False</SpecificVersion>
+          <HintPath>.\_Refs\$(Configuration)\RevitAPIUI.dll</HintPath>
+		  <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition=" '$(Configuration)'=='2020' or '$(Configuration)'=='Debug'">
+      <ItemGroup>
+        <Reference Include="RevitAPI, Version=20.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+          <SpecificVersion>False</SpecificVersion>
+          <HintPath>.\_Refs\$(Configuration)\RevitAPI.dll</HintPath>
+		  <Private>False</Private>
+        </Reference>	  
+        <Reference Include="RevitAPIUI, Version=20.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+          <SpecificVersion>False</SpecificVersion>
+          <HintPath>.\_Refs\$(Configuration)\RevitAPIUI.dll</HintPath>
+		  <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>  
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Commands\StartCommand.cs" />
+    <Page Include="Views\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="UiCommand.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="Views\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="_Refs\$(Configuration)\RevitAPI.dll" />
+  </ItemGroup>
+  <ItemGroup>
+	<Content Include="_Refs\$(Configuration)\RevitAPIUI.dll" />
+  </ItemGroup>  
+  <ItemGroup>
+    <ProjectReference Include="..\RevitTask\RevitTask.csproj">
+      <Project>{4c58a8df-3c83-46d8-b340-3459daac6744}</Project>
+      <Name>RevitTask</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
