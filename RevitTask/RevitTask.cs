@@ -7,23 +7,15 @@ using System.Threading.Tasks;
 /// for <see cref="Autodesk.Revit.UI.IExternalEventHandler"/>
 /// </summary>
 /// <typeparam name="TResult"></typeparam>
-public class RevitTask<TResult>
+public class RevitTask
 {
     private EventHandler _handler;
-    private TaskCompletionSource<TResult> _tcs;
+    private TaskCompletionSource<object> _tcs;
     private ExternalEvent _externalEvent;
 
     /// <summary>
-    /// Sets required <paramref name="func"/> as a body
-    /// of <see cref="IExternalEventHandler.Execute(UIApplication)"/>
-    /// method and raises related <see cref="Autodesk.Revit.UI.ExternalEvent"/>
+    /// .ctor
     /// </summary>
-    /// <param name="func">Any function that depends on
-    /// <see cref="Autodesk.Revit.UI.UIApplication"/>
-    /// and results in object of <see cref="TResult"/> type.</param>
-    /// <param name="continueOnCapturedContext">This parameter
-    /// can be used to control the thread, on which
-    /// continuation will take place.</param>
     public RevitTask()
     {
         _handler = new EventHandler();
@@ -41,14 +33,30 @@ public class RevitTask<TResult>
     /// <param name="func">Any function that depends on
     /// <see cref="Autodesk.Revit.UI.UIApplication"/>
     /// and results in object of <see cref="TResult"/> type.</param>
-    /// <param name="continueOnCapturedContext">This parameter
-    /// can be used to control the thread, on which
-    /// continuation will take place.</param>
-    public Task<TResult> Run(Func<UIApplication, TResult> func)
+    public Task<object> Run(Func<UIApplication, object> func)
     {
-        _tcs = new TaskCompletionSource<TResult>();
+        _tcs = new TaskCompletionSource<object>();
 
         _handler.Func = func;
+
+        _externalEvent.Raise();
+
+        return _tcs.Task;
+    }
+
+    /// <summary>
+    /// Sets required <paramref name="func"/> as a body
+    /// of <see cref="IExternalEventHandler.Execute(UIApplication)"/>
+    /// method and raises related <see cref="Autodesk.Revit.UI.ExternalEvent"/>
+    /// </summary>
+    /// <param name="func">Any function that depends on
+    /// <see cref="Autodesk.Revit.UI.UIDocument"/>
+    /// and results in object of <see cref="TResult"/> type.</param>
+    public Task<object> Run(Func<UIDocument, object> func)
+    {
+        _tcs = new TaskCompletionSource<object>();
+
+        _handler.Func = (app) => func(app.ActiveUIDocument);
 
         _externalEvent.Raise();
 
@@ -62,7 +70,7 @@ public class RevitTask<TResult>
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="result"></param>
-    private void OnEventCompleted(object sender, TResult result)
+    private void OnEventCompleted(object sender, object result)
     {
         if (_handler.Exception == null)
         {
@@ -77,13 +85,13 @@ public class RevitTask<TResult>
     private class EventHandler :
         IExternalEventHandler
     {
-        private Func<UIApplication, TResult> _func;
+        private Func<UIApplication, object> _func;
 
-        public event EventHandler<TResult> EventCompleted;
+        public event EventHandler<object> EventCompleted;
 
         public Exception Exception { get; private set; }
 
-        public Func<UIApplication, TResult> Func
+        public Func<UIApplication, object> Func
         {
             get => _func;
             set => _func = value ??
@@ -92,7 +100,7 @@ public class RevitTask<TResult>
 
         public void Execute(UIApplication app)
         {
-            TResult result = default;
+            object result = default;
             try
             {
                 result = Func(app);
@@ -107,7 +115,7 @@ public class RevitTask<TResult>
 
         public string GetName()
         {
-            return "some func";
+            return "RevitTask";
         }
     }
 }
