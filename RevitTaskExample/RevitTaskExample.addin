@@ -1,0 +1,11 @@
+﻿<RevitAddIns>
+  <AddIn Type="Command">
+      <Assembly>RevitTaskExample.dll</Assembly>
+      <ClientId>85621631-CDA8-46EE-AD82-E0FC91D40BAA</ClientId>
+      <FullClassName>RevitTaskExample.StartCommand</FullClassName>
+      <Text>RevitTask Example</Text>
+      <VisibilityMode>AlwaysVisible</VisibilityMode>
+      <LanguageType>Unknown</LanguageType>
+      <VendorId>WHSH</VendorId>
+  </AddIn>
+</RevitAddIns>
