@@ -7,7 +7,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>RevitTaskExample</RootNamespace>
     <AssemblyName>RevitTaskExample</AssemblyName>
-	<OutputPath>bin\$(Configuration)\</OutputPath>   	
+    <OutputPath>bin\$(Configuration)\</OutputPath>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -24,45 +24,45 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == '2016|AnyCPU' ">
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>       
-  </PropertyGroup>                                              
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == '2017|AnyCPU' ">
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>     
-  </PropertyGroup>                                              
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+  </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == '2018|AnyCPU' ">
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>     
-  </PropertyGroup>                                              
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+  </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == '2019|AnyCPU' ">
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>       
-  </PropertyGroup>                                              
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+  </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == '2020|AnyCPU' ">
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
   </PropertyGroup>
   <Choose>
     <When Condition=" '$(Configuration)'=='2016' ">
       <ItemGroup>
-		<Reference Include="RevitAPI, Version=16.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+        <Reference Include="RevitAPI, Version=16.0.0.0, Culture=neutral, processorArchitecture=AMD64">
           <SpecificVersion>False</SpecificVersion>
-          <HintPath>.\_Refs\$(Configuration)\RevitAPI.dll</HintPath>
-		  <Private>False</Private>
+          <HintPath>..\packages\Revit_All_Main_Versions_API_x64.$(Configuration).0.1\lib\net45\RevitAPI.dll</HintPath>
+          <Private>False</Private>
         </Reference>
         <Reference Include="RevitAPIUI, Version=16.0.0.0, Culture=neutral, processorArchitecture=AMD64">
           <SpecificVersion>False</SpecificVersion>
-          <HintPath>.\_Refs\$(Configuration)\RevitAPIUI.dll</HintPath>
+          <HintPath>..\packages\Revit_All_Main_Versions_API_x64.$(Configuration).0.1\lib\net45\RevitAPIUI.dll</HintPath>
           <Private>False</Private>
-        </Reference>		
-      </ItemGroup>	  
+        </Reference>
+      </ItemGroup>
     </When>
     <When Condition=" '$(Configuration)'=='2017' ">
       <ItemGroup>
         <Reference Include="RevitAPI, Version=17.0.0.0, Culture=neutral, processorArchitecture=AMD64">
           <SpecificVersion>False</SpecificVersion>
-          <HintPath>.\_Refs\$(Configuration)\RevitAPI.dll</HintPath>
-		  <Private>False</Private>
-        </Reference>	  
+          <HintPath>..\packages\Revit_All_Main_Versions_API_x64.$(Configuration).0.1\lib\net46\RevitAPI.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
         <Reference Include="RevitAPIUI, Version=17.0.0.0, Culture=neutral, processorArchitecture=AMD64">
           <SpecificVersion>False</SpecificVersion>
-          <HintPath>.\_Refs\$(Configuration)\RevitAPIUI.dll</HintPath>
+          <HintPath>..\packages\Revit_All_Main_Versions_API_x64.$(Configuration).0.1\lib\net46\RevitAPIUI.dll</HintPath>
           <Private>False</Private>
         </Reference>
       </ItemGroup>
@@ -71,13 +71,13 @@
       <ItemGroup>
         <Reference Include="RevitAPI, Version=18.0.0.0, Culture=neutral, processorArchitecture=AMD64">
           <SpecificVersion>False</SpecificVersion>
-          <HintPath>.\_Refs\$(Configuration)\RevitAPI.dll</HintPath>
-		  <Private>False</Private>
-        </Reference>	  
+          <HintPath>..\packages\Revit_All_Main_Versions_API_x64.$(Configuration).0.1\lib\net46\RevitAPI.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
         <Reference Include="RevitAPIUI, Version=18.0.0.0, Culture=neutral, processorArchitecture=AMD64">
           <SpecificVersion>False</SpecificVersion>
-          <HintPath>.\_Refs\$(Configuration)\RevitAPIUI.dll</HintPath>
-		  <Private>False</Private>
+          <HintPath>..\packages\Revit_All_Main_Versions_API_x64.$(Configuration).0.1\lib\net46\RevitAPIUI.dll</HintPath>
+          <Private>False</Private>
         </Reference>
       </ItemGroup>
     </When>
@@ -85,42 +85,18 @@
       <ItemGroup>
         <Reference Include="RevitAPI, Version=19.0.0.0, Culture=neutral, processorArchitecture=AMD64">
           <SpecificVersion>False</SpecificVersion>
-          <HintPath>.\_Refs\$(Configuration)\RevitAPI.dll</HintPath>
-		  <Private>False</Private>
-        </Reference>	  
+          <HintPath>..\packages\Revit_All_Main_Versions_API_x64.$(Configuration).0.1\lib\net47\RevitAPI.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
         <Reference Include="RevitAPIUI, Version=19.0.0.0, Culture=neutral, processorArchitecture=AMD64">
           <SpecificVersion>False</SpecificVersion>
-          <HintPath>.\_Refs\$(Configuration)\RevitAPIUI.dll</HintPath>
-		  <Private>False</Private>
+          <HintPath>..\packages\Revit_All_Main_Versions_API_x64.$(Configuration).0.1\lib\net47\RevitAPIUI.dll</HintPath>
+          <Private>False</Private>
         </Reference>
       </ItemGroup>
     </When>
-    <When Condition=" '$(Configuration)'=='2020' or '$(Configuration)'=='Debug'">
-      <ItemGroup>
-        <Reference Include="RevitAPI, Version=20.0.0.0, Culture=neutral, processorArchitecture=AMD64">
-          <SpecificVersion>False</SpecificVersion>
-          <HintPath>.\_Refs\$(Configuration)\RevitAPI.dll</HintPath>
-		  <Private>False</Private>
-        </Reference>	  
-        <Reference Include="RevitAPIUI, Version=20.0.0.0, Culture=neutral, processorArchitecture=AMD64">
-          <SpecificVersion>False</SpecificVersion>
-          <HintPath>.\_Refs\$(Configuration)\RevitAPIUI.dll</HintPath>
-		  <Private>False</Private>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>  
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xaml">
-      <RequiredTargetFramework>4.0</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="WindowsBase" />
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
-  </ItemGroup>
+    <When Condition=" '$(Configuration)'=='2020' or '$(Configuration)'=='Debug'" />
+  </Choose>
   <ItemGroup>
     <Compile Include="Commands\StartCommand.cs" />
     <Page Include="Views\MainWindow.xaml">
@@ -140,17 +116,24 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="_Refs\$(Configuration)\RevitAPI.dll" />
-  </ItemGroup>
-  <ItemGroup>
-	<Content Include="_Refs\$(Configuration)\RevitAPIUI.dll" />
-  </ItemGroup>  
-  <ItemGroup>
     <ProjectReference Include="..\RevitTask\RevitTask.csproj">
       <Project>{4c58a8df-3c83-46d8-b340-3459daac6744}</Project>
       <Name>RevitTask</Name>
       <Private>False</Private>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Revit_All_Main_Versions_API_x64" ExcludeAssets="Runtime">
+      <Version>$(Configuration).0.1</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
