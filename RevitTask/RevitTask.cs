@@ -100,8 +100,9 @@ public class RevitTask
 
         public void Execute(UIApplication app)
         {
-      //object result = default; // Error CS8107  Feature 'default literal' is not available in C# 7.0. Please use language version 7.1 or greater.	
-      object result = null; // jeremy used null to fix Error CS8107
+            object result = null;
+
+            Exception = null;
 
             try
             {
