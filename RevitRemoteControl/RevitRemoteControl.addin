@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <AddIn Type="Command">
+    <Assembly>RevitRemoteControl.dll</Assembly>
+    <AddInId>A83DF02D-E9AA-4373-99F8-BFBD526C2A54</AddInId>
+    <FullClassName>RevitRemoteControl.RemoteControl</FullClassName>
+    <Name>Revit Remote Control</Name>
+	  <VisibilityMode>AlwaysVisible</VisibilityMode>
+    <VendorId>WHSH</VendorId>
+    <VendorDescription>OCEAN</VendorDescription>
+  </AddIn>
+</RevitAddIns>
