@@ -33,30 +33,34 @@ public class RevitTask
     /// <param name="func">Any function that depends on
     /// <see cref="Autodesk.Revit.UI.UIApplication"/>
     /// and results in object of <see cref="TResult"/> type.</param>
-    public Task<object> Run(Func<UIApplication, object> func)
+    public Task<TResult> Run<TResult>(Func<UIApplication, TResult> func)
     {
         _tcs = new TaskCompletionSource<object>();
 
-        _handler.Func = func;
+        var task = Task.Run(async () => (TResult)await _tcs.Task);
+
+        _handler.Func = (app) => func(app);
 
         _externalEvent.Raise();
 
-        return _tcs.Task;
+        //// var task = Task.FromResult((TResult)_tcs.Task.Result);
+
+        return task;
     }
 
-    /// <summary>
-    /// Sets required <paramref name="func"/> as a body
+        /// <summary>
+    /// Sets required <paramref name="act"/> as a body
     /// of <see cref="IExternalEventHandler.Execute(UIApplication)"/>
     /// method and raises related <see cref="Autodesk.Revit.UI.ExternalEvent"/>
     /// </summary>
-    /// <param name="func">Any function that depends on
-    /// <see cref="Autodesk.Revit.UI.UIDocument"/>
+    /// <param name="act">Any action that depends on
+    /// <see cref="Autodesk.Revit.UI.UIApplication"/>
     /// and results in object of <see cref="TResult"/> type.</param>
-    public Task<object> Run(Func<UIDocument, object> func)
+    public Task Run(Action<UIApplication> act)
     {
         _tcs = new TaskCompletionSource<object>();
 
-        _handler.Func = (app) => func(app.ActiveUIDocument);
+        _handler.Func = (app) => { act(app); return new object(); };
 
         _externalEvent.Raise();
 
