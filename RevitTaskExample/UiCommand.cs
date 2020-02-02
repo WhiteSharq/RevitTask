@@ -19,7 +19,7 @@ namespace RevitTaskExample
             return true;
         }
 
-        public async void Execute(object parameter)
+        public void Execute(object parameter)
         {
             _act();
         }

@@ -41,9 +41,9 @@ namespace RevitTaskExample
             {
                 for (int i = 0; i < 10; i++)
                 {
-                    var instance = (FamilyInstance)await _revitTask.Run((doc) =>
+                    var instance = (FamilyInstance)await _revitTask.Run((uiApp) =>
                        CreateFamilyInstance(
-                           doc.Application.ActiveUIDocument.Document,
+                           uiApp.ActiveUIDocument.Document,
                            null));
                 }
             }

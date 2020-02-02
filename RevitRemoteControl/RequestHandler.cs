@@ -14,14 +14,14 @@ namespace RevitRemoteControl
         {
             string[] result;
 
-            Task<object> task;
+            Task<string[]> task;
 
             if (request == "FILEDIALOG")
             {
                 task = _revitTask
                     .Run((app) =>
                     {
-                        var document = app.Document;
+                        //// var document = app.Document;
 
                         var dialog = new FileOpenDialog("Revit Files (*.rvt)|*.rvt");
 
@@ -38,14 +38,14 @@ namespace RevitRemoteControl
             else if (request == "VIEWLIST")
             {
                 task = _revitTask
-                    .Run((uidoc) =>
+                    .Run((uiapp) =>
                     {
-                        if (uidoc == null)
+                        if (uiapp.ActiveUIDocument?.Document == null)
                         {
                             return new[] {"No opened documents"};
                         }
 
-                        var document = uidoc.Document;
+                        var document = uiapp.ActiveUIDocument.Document;
 
                         var plans = new FilteredElementCollector(document)
                             .WhereElementIsNotElementType()
@@ -80,7 +80,7 @@ namespace RevitRemoteControl
 
             try
             {
-                result = (string[])await task;
+                result = await task;
             }
             catch (Exception e)
             {
