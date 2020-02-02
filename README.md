@@ -28,7 +28,7 @@ a convenient way of returning results of ExternalEvent handlers and dealing with
     string mess = string.Empty;
     try
     {
-        var i = (int) await task.Run(app => app.ActiveUIDocument
+        var i = await task.Run<int>(app => app.ActiveUIDocument
                             .Selection
                             .PickObjects(Autodesk.Revit.UI.Selection.ObjectType.Element)
                             .Count);
